@@ -9,8 +9,37 @@ import { supabase } from "@/lib/supabase";
  * (Phase 5), with no impact on components.
  */
 
+/** Sign in with email + password. Works with zero external provider setup. */
+export async function signInWithEmail(
+  email: string,
+  password: string,
+): Promise<void> {
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) throw error;
+}
+
+/**
+ * Create an account with email + password. Returns whether a session was
+ * established immediately. If the project still requires email confirmation,
+ * `session` will be null and the caller should prompt the user to confirm.
+ */
+export async function signUpWithEmail(
+  email: string,
+  password: string,
+  fullName: string,
+): Promise<{ needsEmailConfirmation: boolean }> {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { full_name: fullName } },
+  });
+  if (error) throw error;
+  return { needsEmailConfirmation: !data.session };
+}
+
 /** Start the Google OAuth login. Redirects the browser to Google, then back to
- *  /auth/callback where supabase-js completes the PKCE code exchange. */
+ *  /auth/callback where supabase-js completes the PKCE code exchange.
+ *  Wired and ready — enable by configuring the Google provider in Supabase. */
 export async function signInWithGoogle(): Promise<void> {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",

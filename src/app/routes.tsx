@@ -6,6 +6,8 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { DashboardPage } from "@/features/dashboard/DashboardPage";
 import { ClientsPage } from "@/features/clients/ClientsPage";
 import { JobsPage } from "@/features/jobs/JobsPage";
+import { JobFormPage } from "@/features/jobs/JobFormPage";
+import { JobDetailPage } from "@/features/jobs/JobDetailPage";
 import { CalendarPage } from "@/features/calendar/CalendarPage";
 import { BillingPage } from "@/features/billing/BillingPage";
 import { SettingsPage } from "@/features/settings/SettingsPage";
@@ -25,6 +27,9 @@ export const router = createBrowserRouter([
           { path: "dashboard", element: <DashboardPage /> },
           { path: "clients", element: <ClientsPage /> },
           { path: "jobs", element: <JobsPage /> },
+          { path: "jobs/new", element: <JobFormPage mode="new" /> },
+          { path: "jobs/:id", element: <JobDetailPage /> },
+          { path: "jobs/:id/edit", element: <JobFormPage mode="edit" /> },
           { path: "calendar", element: <CalendarPage /> },
           { path: "billing", element: <BillingPage /> },
           { path: "settings", element: <SettingsPage /> },
