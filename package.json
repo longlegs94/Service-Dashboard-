@@ -11,6 +11,8 @@
     "typecheck": "tsc -b --noEmit"
   },
   "dependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
     "@fullcalendar/core": "^6.1.21",
     "@fullcalendar/daygrid": "^6.1.21",
     "@fullcalendar/interaction": "^6.1.21",
@@ -32,6 +34,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@capacitor/cli": "^6.2.1",
     "@types/node": "^22.19.21",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",

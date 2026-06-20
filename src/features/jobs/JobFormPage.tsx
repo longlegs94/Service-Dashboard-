@@ -14,6 +14,7 @@ import {
   useUpdateJob,
 } from "@/features/jobs/hooks";
 import { useOrg } from "@/features/org/useOrg";
+import { useMembers } from "@/features/team/hooks";
 import { JOB_STATUSES, type JobStatus } from "@/features/jobs/status";
 
 /** Shared form for creating a new ticket and editing an existing one. */
@@ -31,7 +32,10 @@ export function JobFormPage({ mode }: { mode: "new" | "edit" }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<JobStatus>("new");
+  const [assignedTo, setAssignedTo] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  const members = useMembers(org?.orgId);
 
   // Hydrate the form when editing.
   useEffect(() => {
@@ -42,6 +46,7 @@ export function JobFormPage({ mode }: { mode: "new" | "edit" }) {
       setTitle(j.title);
       setDescription(j.description ?? "");
       setStatus(j.status as JobStatus);
+      setAssignedTo(j.assigned_to ?? "");
     }
   }, [mode, existing.data]);
 
@@ -63,10 +68,16 @@ export function JobFormPage({ mode }: { mode: "new" | "edit" }) {
           title,
           description,
           status,
+          assignedTo: assignedTo || null,
         });
         navigate(`/app/jobs/${job.id}`, { replace: true });
       } else {
-        await updateJob.mutateAsync({ title, description, status });
+        await updateJob.mutateAsync({
+          title,
+          description,
+          status,
+          assigned_to: assignedTo || null,
+        });
         navigate(`/app/jobs/${id}`, { replace: true });
       }
     } catch (err) {
@@ -157,6 +168,24 @@ export function JobFormPage({ mode }: { mode: "new" | "edit" }) {
                 ))}
               </Select>
             </div>
+
+            {(members.data?.length ?? 0) > 1 && (
+              <div className="space-y-1.5">
+                <Label htmlFor="assignee">Assign to</Label>
+                <Select
+                  id="assignee"
+                  value={assignedTo}
+                  onChange={(e) => setAssignedTo(e.target.value)}
+                >
+                  <option value="">Unassigned</option>
+                  {members.data!.map((m) => (
+                    <option key={m.profileId} value={m.profileId}>
+                      {m.fullName ?? m.email ?? "Member"}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+            )}
 
             {error && <p className="text-sm text-destructive">{error}</p>}
 

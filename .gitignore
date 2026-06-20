@@ -28,3 +28,8 @@ dist-ssr
 # Supabase local
 supabase/.branches
 supabase/.temp
+
+# Capacitor native project (generated locally via `npx cap add android`)
+/android
+/ios
+.gradle

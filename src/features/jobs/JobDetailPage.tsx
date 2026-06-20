@@ -109,6 +109,14 @@ export function JobDetailPage() {
               {job.client.phone}
             </a>
           )}
+          {job.assignee?.full_name && (
+            <p className="pt-1 text-sm text-muted-foreground">
+              Assigned to{" "}
+              <span className="font-medium text-foreground">
+                {job.assignee.full_name}
+              </span>
+            </p>
+          )}
         </CardContent>
       </Card>
 

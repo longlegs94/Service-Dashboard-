@@ -12,6 +12,7 @@ import { JobsPage } from "@/features/jobs/JobsPage";
 import { JobFormPage } from "@/features/jobs/JobFormPage";
 import { JobDetailPage } from "@/features/jobs/JobDetailPage";
 import { SettingsPage } from "@/features/settings/SettingsPage";
+import { TeamPage } from "@/features/team/TeamPage";
 
 // Code-split the heavy routes so the initial mobile load stays lean.
 // FullCalendar (calendar) and the billing screens load on demand.
@@ -96,6 +97,7 @@ export const router = createBrowserRouter([
           { path: "billing/quotes/:id/edit", element: <QuoteFormPage mode="edit" /> },
           { path: "billing/receivables", element: <ReceivablesPage /> },
           { path: "settings", element: <SettingsPage /> },
+          { path: "team", element: <TeamPage /> },
         ],
       },
     ],

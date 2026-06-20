@@ -5,13 +5,14 @@ import { findOrCreateClient } from "@/services/clients";
 
 export type JobRow = Database["public"]["Tables"]["jobs"]["Row"];
 
-/** A job with the linked client's name/phone joined in (for list/detail views). */
+/** A job with the linked client + assignee joined in (for list/detail views). */
 export interface JobWithClient extends JobRow {
   client: { id: string; display_name: string; phone: string | null } | null;
+  assignee: { id: string; full_name: string | null } | null;
 }
 
 const JOB_SELECT =
-  "*, client:clients(id, display_name, phone)";
+  "*, client:clients(id, display_name, phone), assignee:profiles!jobs_assigned_to_fkey(id, full_name)";
 
 /** Lists all non-deleted jobs for the org (RLS scopes to the caller's org). */
 export async function listJobs(): Promise<JobWithClient[]> {
@@ -42,6 +43,7 @@ export interface CreateTicketInput {
   title: string;
   description?: string | null;
   status: JobStatus;
+  assignedTo?: string | null;
 }
 
 /**
@@ -65,6 +67,7 @@ export async function createTicket(input: CreateTicketInput): Promise<JobRow> {
       title: input.title.trim(),
       description: input.description?.trim() || null,
       status: input.status,
+      assigned_to: input.assignedTo || null,
       ...statusTimestamps(input.status),
     })
     .select("*")
@@ -77,6 +80,7 @@ export interface UpdateJobInput {
   title?: string;
   description?: string | null;
   status?: JobStatus;
+  assigned_to?: string | null;
 }
 
 export async function updateJob(

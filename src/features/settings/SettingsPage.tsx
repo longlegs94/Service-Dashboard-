@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useOrg } from "@/features/org/useOrg";
 import { signOut } from "@/services/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Users } from "lucide-react";
 
 export function SettingsPage() {
   const { data: org, isLoading } = useOrg();
@@ -45,15 +46,19 @@ export function SettingsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Coming soon</CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm text-muted-foreground">
-          Scheduling calendar, invoices & Square payments, team members, and
-          Google sign-in all build on this foundation.
-        </CardContent>
-      </Card>
+      <Link to="/app/team" className="block">
+        <Card className="transition-colors hover:bg-accent">
+          <CardContent className="flex items-center gap-3 py-4">
+            <Users className="h-5 w-5 text-muted-foreground" />
+            <div>
+              <p className="font-medium">Team</p>
+              <p className="text-sm text-muted-foreground">
+                Invite teammates and manage roles.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
 
       <Button variant="outline" onClick={handleSignOut} className="w-full">
         Sign out

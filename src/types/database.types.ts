@@ -597,6 +597,47 @@ export type Database = {
           },
         ]
       }
+      org_invitations: {
+        Row: {
+          id: string
+          org_id: string
+          email: string
+          role: Database["public"]["Enums"]["membership_role"]
+          status: string
+          invited_by: string | null
+          created_at: string
+          accepted_at: string | null
+        }
+        Insert: {
+          id?: string
+          org_id: string
+          email: string
+          role?: Database["public"]["Enums"]["membership_role"]
+          status?: string
+          invited_by?: string | null
+          created_at?: string
+          accepted_at?: string | null
+        }
+        Update: {
+          id?: string
+          org_id?: string
+          email?: string
+          role?: Database["public"]["Enums"]["membership_role"]
+          status?: string
+          invited_by?: string | null
+          created_at?: string
+          accepted_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "org_invitations_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       payments: {
         Row: {
           amount_cents: number
