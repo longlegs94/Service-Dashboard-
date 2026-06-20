@@ -80,19 +80,23 @@ export function CalendarPage() {
 
   const events = useMemo(
     () =>
-      visits.map((v) => {
-        const client = v.job?.client?.display_name;
-        const title = `${v.job?.title ?? "Visit"}${
-          client ? " · " + client : ""
-        }`;
-        return {
-          id: v.id,
-          title,
-          start: v.starts_at,
-          end: v.ends_at,
-          extendedProps: { jobId: v.job_id },
-        };
-      }),
+      visits
+        .filter((v): v is typeof v & { starts_at: string } =>
+          Boolean(v.starts_at),
+        )
+        .map((v) => {
+          const client = v.job?.client?.display_name;
+          const title = `${v.job?.title ?? "Visit"}${
+            client ? " · " + client : ""
+          }`;
+          return {
+            id: v.id,
+            title,
+            start: v.starts_at,
+            end: v.ends_at ?? undefined,
+            extendedProps: { jobId: v.job_id },
+          };
+        }),
     [visits],
   );
 

@@ -12,6 +12,13 @@ import { JobFormPage } from "@/features/jobs/JobFormPage";
 import { JobDetailPage } from "@/features/jobs/JobDetailPage";
 import { CalendarPage } from "@/features/calendar/CalendarPage";
 import { BillingPage } from "@/features/billing/BillingPage";
+import { InvoicesListPage } from "@/features/billing/InvoicesListPage";
+import { InvoiceFormPage } from "@/features/billing/InvoiceFormPage";
+import { InvoiceDetailPage } from "@/features/billing/InvoiceDetailPage";
+import { QuotesListPage } from "@/features/billing/QuotesListPage";
+import { QuoteFormPage } from "@/features/billing/QuoteFormPage";
+import { QuoteDetailPage } from "@/features/billing/QuoteDetailPage";
+import { ReceivablesPage } from "@/features/billing/ReceivablesPage";
 import { SettingsPage } from "@/features/settings/SettingsPage";
 
 export const router = createBrowserRouter([
@@ -37,6 +44,15 @@ export const router = createBrowserRouter([
           { path: "jobs/:id/edit", element: <JobFormPage mode="edit" /> },
           { path: "calendar", element: <CalendarPage /> },
           { path: "billing", element: <BillingPage /> },
+          { path: "billing/invoices", element: <InvoicesListPage /> },
+          { path: "billing/invoices/new", element: <InvoiceFormPage mode="new" /> },
+          { path: "billing/invoices/:id", element: <InvoiceDetailPage /> },
+          { path: "billing/invoices/:id/edit", element: <InvoiceFormPage mode="edit" /> },
+          { path: "billing/quotes", element: <QuotesListPage /> },
+          { path: "billing/quotes/new", element: <QuoteFormPage mode="new" /> },
+          { path: "billing/quotes/:id", element: <QuoteDetailPage /> },
+          { path: "billing/quotes/:id/edit", element: <QuoteFormPage mode="edit" /> },
+          { path: "billing/receivables", element: <ReceivablesPage /> },
           { path: "settings", element: <SettingsPage /> },
         ],
       },
