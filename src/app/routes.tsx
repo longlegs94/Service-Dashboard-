@@ -1,3 +1,4 @@
+import { lazy, type ComponentType } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { LoginPage } from "@/features/auth/LoginPage";
 import { AuthCallback } from "@/features/auth/AuthCallback";
@@ -10,16 +11,57 @@ import { ClientDetailPage } from "@/features/clients/ClientDetailPage";
 import { JobsPage } from "@/features/jobs/JobsPage";
 import { JobFormPage } from "@/features/jobs/JobFormPage";
 import { JobDetailPage } from "@/features/jobs/JobDetailPage";
-import { CalendarPage } from "@/features/calendar/CalendarPage";
-import { BillingPage } from "@/features/billing/BillingPage";
-import { InvoicesListPage } from "@/features/billing/InvoicesListPage";
-import { InvoiceFormPage } from "@/features/billing/InvoiceFormPage";
-import { InvoiceDetailPage } from "@/features/billing/InvoiceDetailPage";
-import { QuotesListPage } from "@/features/billing/QuotesListPage";
-import { QuoteFormPage } from "@/features/billing/QuoteFormPage";
-import { QuoteDetailPage } from "@/features/billing/QuoteDetailPage";
-import { ReceivablesPage } from "@/features/billing/ReceivablesPage";
 import { SettingsPage } from "@/features/settings/SettingsPage";
+
+// Code-split the heavy routes so the initial mobile load stays lean.
+// FullCalendar (calendar) and the billing screens load on demand.
+function lazyNamed<P = Record<string, never>>(
+  loader: () => Promise<Record<string, unknown>>,
+  key: string,
+) {
+  return lazy(async () => ({
+    default: (await loader())[key] as ComponentType<P>,
+  }));
+}
+
+type FormMode = { mode: "new" | "edit" };
+
+const CalendarPage = lazyNamed(
+  () => import("@/features/calendar/CalendarPage"),
+  "CalendarPage",
+);
+const BillingPage = lazyNamed(
+  () => import("@/features/billing/BillingPage"),
+  "BillingPage",
+);
+const InvoicesListPage = lazyNamed(
+  () => import("@/features/billing/InvoicesListPage"),
+  "InvoicesListPage",
+);
+const InvoiceFormPage = lazyNamed<FormMode>(
+  () => import("@/features/billing/InvoiceFormPage"),
+  "InvoiceFormPage",
+);
+const InvoiceDetailPage = lazyNamed(
+  () => import("@/features/billing/InvoiceDetailPage"),
+  "InvoiceDetailPage",
+);
+const QuotesListPage = lazyNamed(
+  () => import("@/features/billing/QuotesListPage"),
+  "QuotesListPage",
+);
+const QuoteFormPage = lazyNamed<FormMode>(
+  () => import("@/features/billing/QuoteFormPage"),
+  "QuoteFormPage",
+);
+const QuoteDetailPage = lazyNamed(
+  () => import("@/features/billing/QuoteDetailPage"),
+  "QuoteDetailPage",
+);
+const ReceivablesPage = lazyNamed(
+  () => import("@/features/billing/ReceivablesPage"),
+  "ReceivablesPage",
+);
 
 export const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/app/dashboard" replace /> },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import { signOut } from "@/services/auth";
 import { useSession } from "@/features/auth/useAuth";
+import { InstallBanner } from "@/features/pwa/InstallBanner";
 import { Button } from "@/components/ui/button";
+import { FullPageSpinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -65,9 +67,14 @@ export function AppLayout() {
       />
 
       {/* Main content */}
-      <main className="flex-1 p-4 md:p-8">
-        <Outlet />
-      </main>
+      <div className="flex flex-1 flex-col">
+        <InstallBanner />
+        <main className="flex-1 p-4 md:p-8">
+          <Suspense fallback={<FullPageSpinner />}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </div>
     </div>
   );
 }

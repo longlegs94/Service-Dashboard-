@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Select } from "@/components/ui/select";
 import { FullPageSpinner } from "@/components/ui/spinner";
 import { StatusBadge } from "@/features/jobs/components/StatusBadge";
+import { JobPhotos } from "@/features/jobs/components/JobPhotos";
 import {
   useDeleteJob,
   useJob,
@@ -122,6 +123,9 @@ export function JobDetailPage() {
           </CardContent>
         </Card>
       )}
+
+      {/* Photos & files */}
+      <JobPhotos jobId={job.id} />
 
       {/* Danger zone */}
       <div className="pt-2">
