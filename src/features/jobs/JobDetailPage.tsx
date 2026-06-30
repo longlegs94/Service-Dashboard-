@@ -7,6 +7,7 @@ import { Select } from "@/components/ui/select";
 import { FullPageSpinner } from "@/components/ui/spinner";
 import { StatusBadge } from "@/features/jobs/components/StatusBadge";
 import { JobPhotos } from "@/features/jobs/components/JobPhotos";
+import { ContactActions } from "@/components/ContactActions";
 import {
   useDeleteJob,
   useJob,
@@ -116,6 +117,9 @@ export function JobDetailPage() {
                 {job.assignee.full_name}
               </span>
             </p>
+          )}
+          {job.client?.phone && (
+            <ContactActions phone={job.client.phone} className="flex flex-wrap gap-2 pt-2" />
           )}
         </CardContent>
       </Card>

@@ -20,6 +20,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Spinner, FullPageSpinner } from "@/components/ui/spinner";
+import { ContactActions } from "@/components/ContactActions";
 import { StatusBadge } from "@/features/jobs/components/StatusBadge";
 import { useOrg } from "@/features/org/useOrg";
 import {
@@ -108,6 +109,9 @@ export function ClientDetailPage() {
             <p className="text-sm text-muted-foreground">
               No contact details on file.
             </p>
+          )}
+          {client.phone && (
+            <ContactActions phone={client.phone} className="flex flex-wrap gap-2 pt-1" />
           )}
         </CardContent>
       </Card>
@@ -245,6 +249,12 @@ function AddressesCard({ clientId }: { clientId: string }) {
                     <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                     <span>{formatAddress(a)}</span>
                   </p>
+                  {formatAddress(a) && (
+                    <ContactActions
+                      address={formatAddress(a)}
+                      className="flex gap-2 pt-2"
+                    />
+                  )}
                 </div>
                 <Button
                   variant="ghost"
