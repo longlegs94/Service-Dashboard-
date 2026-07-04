@@ -20,16 +20,20 @@ npm run dev                  # http://localhost:3000
 
 ## Going live — one-time setup (~20 minutes)
 
-### 1. Supabase (stores bookings)
+### 1. Supabase (stores bookings) — ✅ already set up
 
-1. Create a free project at [supabase.com](https://supabase.com) (choose a strong database password).
-2. In the project: **SQL Editor → New query**, paste the contents of
-   [`supabase/migrations/001_bookings.sql`](supabase/migrations/001_bookings.sql), and run it.
-3. Grab from **Project Settings → API**:
-   - Project URL → `NEXT_PUBLIC_SUPABASE_URL`
-   - `service_role` secret key → `SUPABASE_SERVICE_ROLE_KEY` (keep this secret!)
-4. New bookings appear in **Table Editor → bookings**. Update the `status` column as you
-   confirm/complete jobs.
+The `bookings` table lives in the **service-dashboard** project
+(`elmghaklnqigrcgvodwk`, region `ca-central-1`) with RLS locked down; the schema in
+[`supabase/migrations/001_bookings.sql`](supabase/migrations/001_bookings.sql) has been applied.
+
+- `NEXT_PUBLIC_SUPABASE_URL` = `https://elmghaklnqigrcgvodwk.supabase.co`
+- `SUPABASE_SERVICE_ROLE_KEY` → copy from the
+  [project's API settings](https://supabase.com/dashboard/project/elmghaklnqigrcgvodwk/settings/api-keys)
+  (`service_role` secret — keep it server-side only)
+- New bookings appear in **Table Editor → bookings**. Update the `status` column as you
+  confirm/complete jobs.
+- Note: free-tier projects pause after ~1 week of inactivity; click "Restore" in the
+  dashboard if that happens.
 
 ### 2. Anthropic (powers the AI helper)
 
@@ -49,9 +53,11 @@ npm run dev                  # http://localhost:3000
 
 ### 4. Vercel (hosts the site)
 
-1. Push this repo to GitHub (already done if you're reading this there).
-2. At [vercel.com/new](https://vercel.com/new), import the repository — Next.js is detected
-   automatically.
+1. At [vercel.com/new](https://vercel.com/new), import the `Service-Dashboard-` repository —
+   Next.js is detected automatically.
+2. **Important:** if the site code hasn't been merged to the default branch yet, go to
+   **Project → Settings → Git → Production Branch** and set it to
+   `claude/appliance-repair-website-4nl377`, then redeploy.
 3. In the import screen (or later under **Settings → Environment Variables**), add all five
    variables from `.env.example`.
 4. Deploy. Every push to the production branch redeploys automatically.
