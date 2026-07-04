@@ -13,7 +13,7 @@ export function MoreThanRepairs() {
         <SectionHeading
           eyebrow="More than repairs"
           title="Your one-stop appliance shop in Surrey"
-          subtitle="Visit our showroom and parts counter at #102 – 14772 64 Ave — repair is just the beginning."
+          subtitle={`Visit our showroom and parts counter at ${business.address.street} — repair is just the beginning.`}
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {business.otherServices.map((item, i) => {

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Skill-library scripts run standalone under Node (CommonJS), not app code:
+    ".claude/**",
   ]),
 ]);
 

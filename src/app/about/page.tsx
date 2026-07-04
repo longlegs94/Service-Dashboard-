@@ -48,7 +48,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Us"
         title="A family business built on fixed appliances and kept promises"
-        subtitle="From our shop on 64 Avenue in Surrey, we've spent years helping Lower Mainland families keep their kitchens and laundry rooms running."
+        subtitle={`From our shop at ${business.address.street} in Surrey, we've spent years helping Lower Mainland families keep their kitchens and laundry rooms running.`}
       />
 
       <section className="pb-20">
