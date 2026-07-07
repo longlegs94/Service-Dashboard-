@@ -12,29 +12,26 @@ export function CtaBanner({
   subtitle?: string;
 }) {
   return (
-    <section className="py-20 sm:py-24">
-      <Container>
+    <section className="bg-accent-500">
+      <Container className="py-20 sm:py-24">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent-500 to-accent-600 px-8 py-14 text-center text-white shadow-lift sm:px-14">
-            <div
-              className="pointer-events-none absolute -left-20 -bottom-24 h-64 w-64 rounded-full bg-white/10 blur-3xl"
-              aria-hidden="true"
-            />
-            <h2 className="relative text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-lg leading-relaxed text-accent-50">
-              {subtitle}
-            </p>
-            <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+          <div className="grid items-center gap-10 text-white lg:grid-cols-[1.4fr_1fr]">
+            <div>
+              <h2 className="font-display text-4xl font-bold leading-tight sm:text-5xl">
+                {title}
+              </h2>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-accent-50">{subtitle}</p>
+            </div>
+            <div className="flex flex-wrap gap-4 lg:justify-end">
               <Button href="/book" variant="white" size="lg">
                 Book a Repair Now
               </Button>
-              <Button
+              <a
                 href={business.phoneHref}
-                size="lg"
-                className="bg-accent-700 hover:bg-accent-700/80"
+                className="inline-flex items-center gap-2.5 rounded-full border-2 border-white/40 px-7 py-3.5 text-base font-bold text-white transition-colors hover:border-white hover:bg-white/10"
               >
                 <Phone className="h-5 w-5" aria-hidden="true" /> {business.phone}
-              </Button>
+              </a>
             </div>
           </div>
         </Reveal>

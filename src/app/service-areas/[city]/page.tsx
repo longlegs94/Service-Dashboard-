@@ -45,13 +45,13 @@ export default async function CityPage({
 
   return (
     <>
-      <section className="bg-gradient-to-b from-brand-50 to-white pb-16 pt-14 sm:pt-20">
+      <section className="border-b border-ink-100 pb-16 pt-14 sm:pt-20">
         <Container className="max-w-4xl">
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm font-semibold text-brand-700 shadow-soft">
+            <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent-600">
               <MapPin className="h-4 w-4" aria-hidden="true" /> {city.name}, British Columbia
             </p>
-            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-ink-900 sm:text-5xl">
+            <h1 className="font-display mt-5 text-4xl font-bold leading-tight text-ink-900 sm:text-[3.2rem]">
               Appliance repair in {city.name}, done right
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-ink-500">{city.intro}</p>
@@ -60,7 +60,7 @@ export default async function CityPage({
                 Book a Repair in {city.name}
               </Button>
               <Button href={business.phoneHref} variant="outline" size="lg">
-                <Phone className="h-4 w-4 text-brand-600" aria-hidden="true" /> {business.phone}
+                <Phone className="h-4 w-4 text-accent-500" aria-hidden="true" /> {business.phone}
               </Button>
             </div>
           </Reveal>
@@ -70,7 +70,7 @@ export default async function CityPage({
       <section className="py-14">
         <Container className="max-w-4xl">
           <Reveal>
-            <h2 className="text-2xl font-bold text-ink-900">
+            <h2 className="font-display text-2xl font-bold text-ink-900">
               What we repair in {city.name}
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -94,8 +94,8 @@ export default async function CityPage({
           </Reveal>
 
           <Reveal delay={0.08} className="mt-12">
-            <div className="rounded-3xl border border-ink-100 bg-ink-50 p-8">
-              <h2 className="text-2xl font-bold text-ink-900">
+            <div className="rounded-2xl border border-ink-200 bg-ink-50 p-8">
+              <h2 className="font-display text-2xl font-bold text-ink-900">
                 Neighbourhoods we serve in {city.name}
               </h2>
               <p className="mt-2 leading-relaxed text-ink-500">

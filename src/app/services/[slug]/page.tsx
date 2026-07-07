@@ -7,7 +7,6 @@ import { services, getService } from "@/content/services";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { ServiceIcon } from "@/components/ui/service-icon";
 import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { ServiceJsonLd } from "@/components/seo/json-ld";
@@ -44,16 +43,14 @@ export default async function ServicePage({
     <>
       <ServiceJsonLd service={service} />
 
-      <section className="bg-gradient-to-b from-brand-50 to-white pb-16 pt-14 sm:pt-20">
+      <section className="border-b border-ink-100 pb-16 pt-14 sm:pt-20">
         <Container className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-1.5 text-sm font-semibold text-brand-700 shadow-soft">
-              <span className="text-brand-600">
-                <ServiceIcon icon={service.icon} className="h-4 w-4" />
-              </span>
+            <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent-600">
+              <span className="h-px w-8 bg-accent-500" aria-hidden="true" />
               {service.name}
             </p>
-            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-ink-900 sm:text-5xl">
+            <h1 className="font-display mt-5 text-4xl font-bold leading-tight text-ink-900 sm:text-[3.2rem]">
               {service.headline}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-ink-500">{service.description}</p>
@@ -62,12 +59,12 @@ export default async function ServicePage({
                 Book {service.shortName} Repair
               </Button>
               <Button href={business.phoneHref} variant="outline" size="lg">
-                <Phone className="h-4 w-4 text-brand-600" aria-hidden="true" /> {business.phone}
+                <Phone className="h-4 w-4 text-accent-500" aria-hidden="true" /> {business.phone}
               </Button>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lift">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
                 src={service.image}
                 alt={service.imageAlt}
@@ -84,48 +81,50 @@ export default async function ServicePage({
       <section className="py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2">
           <Reveal>
-            <h2 className="flex items-center gap-3 text-2xl font-bold text-ink-900">
+            <h2 className="font-display flex items-center gap-3 text-2xl font-bold text-ink-900">
               <AlertCircle className="h-6 w-6 text-accent-500" aria-hidden="true" />
               Symptoms we fix every week
             </h2>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-6 divide-y divide-ink-100 border-y border-ink-100">
               {service.symptoms.map((symptom) => (
-                <li
-                  key={symptom}
-                  className="flex items-start gap-3 rounded-2xl border border-ink-100 bg-white px-5 py-4 shadow-soft"
-                >
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
-                  <span className="font-medium text-ink-900">{symptom}</span>
+                <li key={symptom} className="flex items-center gap-4 py-4">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-accent-500" aria-hidden="true" />
+                  <span className="font-semibold text-ink-900">{symptom}</span>
                 </li>
               ))}
             </ul>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h2 className="text-2xl font-bold text-ink-900">Brands we service</h2>
+            <h2 className="font-display text-2xl font-bold text-ink-900">Brands we service</h2>
             <p className="mt-3 leading-relaxed text-ink-500">
               Our technicians are experienced with every major appliance brand, and our Surrey
               parts counter keeps common components in stock.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
+            <div className="mt-6 flex flex-wrap gap-2">
               {business.brands.map((brand) => (
                 <span
                   key={brand}
-                  className="rounded-full border border-ink-100 bg-ink-50 px-4 py-1.5 text-sm font-medium text-ink-700"
+                  className="rounded-full border border-ink-200 px-4 py-1.5 text-sm font-semibold text-ink-700"
                 >
                   {brand}
                 </span>
               ))}
             </div>
-            <div className="mt-10 rounded-3xl bg-brand-900 p-8 text-white shadow-lift">
-              <h3 className="text-xl font-bold">Not sure it&apos;s worth repairing?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-100">
-                Describe the problem to our free AI helper and get the likely causes before you
-                spend a dollar — or call us for an honest opinion.
-              </p>
-              <Button href="/diagnose" variant="white" className="mt-5">
-                Try the AI Helper
-              </Button>
+            <div className="relative mt-10 overflow-hidden rounded-2xl bg-night-900 p-8 text-white">
+              <div className="dotgrid-dark absolute inset-0" aria-hidden="true" />
+              <div className="relative">
+                <h3 className="font-display text-xl font-bold">
+                  Not sure it&apos;s worth repairing?
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-300">
+                  Describe the problem to our free AI helper and get the likely causes before
+                  you spend a dollar — or call us for an honest opinion.
+                </p>
+                <Button href="/diagnose" variant="white" className="mt-5">
+                  Try the AI Helper
+                </Button>
+              </div>
             </div>
           </Reveal>
         </Container>

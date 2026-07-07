@@ -18,7 +18,7 @@ export default function DiagnosePage() {
           <p className="inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-1.5 text-sm font-semibold text-brand-700">
             <Sparkles className="h-4 w-4" aria-hidden="true" /> Free AI-powered diagnosis
           </p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+          <h1 className="font-display mt-4 text-3xl font-bold text-ink-900 sm:text-[2.6rem]">
             What&apos;s your appliance doing?
           </h1>
           <p className="mt-3 text-lg text-ink-500">

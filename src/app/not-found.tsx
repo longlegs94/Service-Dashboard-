@@ -9,7 +9,7 @@ export default function NotFound() {
       <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
         <Wrench className="h-8 w-8" aria-hidden="true" />
       </span>
-      <h1 className="mt-6 text-4xl font-bold tracking-tight text-ink-900">
+      <h1 className="font-display mt-6 text-4xl font-bold text-ink-900">
         This page needs a repair
       </h1>
       <p className="mt-3 max-w-md text-lg text-ink-500">

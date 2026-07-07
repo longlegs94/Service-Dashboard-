@@ -65,7 +65,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="text-3xl font-bold tracking-tight text-ink-900">
+            <h2 className="font-display text-3xl font-bold text-ink-900">
               One-stop shop, zero runaround
             </h2>
             <div className="mt-5 space-y-4 leading-relaxed text-ink-500">
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-600">
               Our values
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-ink-900 sm:text-[2.6rem]">
               What we promise every customer
             </h2>
           </Reveal>

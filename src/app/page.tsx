@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
-import { TrustBar } from "@/components/sections/trust-bar";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { WhyUs } from "@/components/sections/why-us";
@@ -23,7 +22,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <ServicesGrid />
       <HowItWorks />
       <WhyUs />

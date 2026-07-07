@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/container";
 
-/** Simple gradient page header used on inner pages. */
+/** Simple editorial page header used on inner pages. */
 export function PageHero({
   eyebrow,
   title,
@@ -12,16 +12,19 @@ export function PageHero({
   subtitle?: string;
 }) {
   return (
-    <section className="bg-gradient-to-b from-brand-50 to-white pb-16 pt-14 sm:pt-20">
+    <section className="border-b border-ink-100 pb-14 pt-14 sm:pt-20">
       <Container>
-        <Reveal className="mx-auto max-w-3xl text-center">
+        <Reveal className="max-w-3xl">
           {eyebrow && (
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-600">
+            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent-600">
+              <span className="h-px w-8 bg-accent-500" aria-hidden="true" />
               {eyebrow}
             </p>
           )}
-          <h1 className="text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl">{title}</h1>
-          {subtitle && <p className="mt-5 text-lg leading-relaxed text-ink-500">{subtitle}</p>}
+          <h1 className="font-display text-4xl font-bold leading-tight text-ink-900 sm:text-[3.4rem]">
+            {title}
+          </h1>
+          {subtitle && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-500">{subtitle}</p>}
         </Reveal>
       </Container>
     </section>

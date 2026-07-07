@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { business } from "@/content/business";
 import { Header } from "@/components/layout/header";
@@ -9,6 +9,12 @@ import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
 });
@@ -42,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <LocalBusinessJsonLd />
         <Header />

@@ -3,9 +3,11 @@
 /* ─────────────────────────────────────────────────────────────
    DESIGN TOKENS — change brand colors here and the whole
    site updates. brand = trust blue, accent = CTA orange.
+   Display font: Bricolage Grotesque · Body: Inter
    ───────────────────────────────────────────────────────────── */
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --color-brand-50: #eff6ff;
   --color-brand-100: #dbeafe;
@@ -26,12 +28,19 @@
   --color-accent-600: #ea580c;
   --color-accent-700: #c2410c;
 
+  --color-ink-950: #080d1a;
   --color-ink-900: #0f172a;
   --color-ink-700: #334155;
   --color-ink-500: #64748b;
   --color-ink-300: #cbd5e1;
+  --color-ink-200: #e2e8f0;
   --color-ink-100: #f1f5f9;
   --color-ink-50: #f8fafc;
+
+  /* deep navy used for dark editorial bands (hero, footer) */
+  --color-night-900: #0a1228;
+  --color-night-800: #0e1a3a;
+  --color-night-700: #14244e;
 
   --shadow-soft: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -8px rgb(15 23 42 / 0.10);
   --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.06), 0 16px 40px -12px rgb(15 23 42 / 0.18);
@@ -49,8 +58,41 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Display type: tight, confident headlines */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Animated link underline used in the header nav */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--color-accent-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Subtle dot grid for dark editorial bands */
+.dotgrid-dark {
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
 ::selection {
-  background: var(--color-brand-100);
+  background: var(--color-accent-200);
 }
 
 @media (prefers-reduced-motion: reduce) {

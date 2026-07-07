@@ -18,9 +18,7 @@ export default function ServicesPage() {
         title="Appliance repair services"
         subtitle="Six major appliances, all major brands, one trusted local team. Every repair starts with a flat-rate quote and ends with a 90-day warranty."
       />
-      <div className="-mt-8">
-        <ServicesGrid />
-      </div>
+      <ServicesGrid />
       <CtaBanner />
     </>
   );

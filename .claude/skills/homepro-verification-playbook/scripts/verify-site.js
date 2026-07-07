@@ -41,7 +41,7 @@ async function fullReveal(page) {
 
   // 1. Pages return 200 with expected content
   const pages = [
-    ["/", "Appliance repair,"],
+    ["/", "Broken appliance?"],
     ["/services", "Appliance repair services"],
     ["/services/washer-repair", "Washer won"],
     ["/service-areas", "Lower Mainland"],

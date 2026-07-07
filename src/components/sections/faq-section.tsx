@@ -15,11 +15,11 @@ export function FaqSection({
   subtitle?: string;
 }) {
   return (
-    <section className="bg-ink-50 py-20 sm:py-24">
+    <section className="border-t border-ink-100 bg-ink-50 py-20 sm:py-28">
       <FaqJsonLd faqs={faqs} />
-      <Container className="max-w-3xl">
+      <Container className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
         <SectionHeading eyebrow="FAQ" title={title} subtitle={subtitle} />
-        <Reveal className="mt-12">
+        <Reveal delay={0.08}>
           <Accordion items={faqs} />
         </Reveal>
       </Container>
