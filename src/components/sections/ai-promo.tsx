@@ -2,6 +2,7 @@ import { MessageCircle, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { ConnectedHomeIllustration } from "@/components/illustrations/connected-home-illustration";
 
 export function AiPromo() {
   return (
@@ -34,8 +35,9 @@ export function AiPromo() {
                 </div>
               </div>
 
-              <div className="hidden lg:block" aria-hidden="true">
-                <div className="ml-auto max-w-sm space-y-3">
+              <div className="hidden lg:block">
+                <ConnectedHomeIllustration className="w-full" />
+                <div className="ml-auto max-w-sm space-y-3" aria-hidden="true">
                   <div className="ml-auto w-fit max-w-[80%] rounded-2xl rounded-br-md bg-white px-4 py-3 text-sm font-medium text-ink-900">
                     My dryer runs but the clothes stay cold…
                   </div>

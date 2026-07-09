@@ -35,7 +35,7 @@ export function HowItWorks() {
         <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
           {steps.map((step, i) => (
             <Reveal key={step.number} delay={i * 0.08}>
-              <div className="border-t-2 border-ink-900 pt-6">
+              <div className="border-t-2 border-ink-900 pt-6 transition-transform duration-300 hover:-translate-y-1">
                 <p className="font-display text-sm font-bold text-accent-600">{step.number}</p>
                 <h3 className="font-display mt-3 text-2xl font-bold text-ink-900">
                   {step.title}

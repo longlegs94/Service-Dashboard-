@@ -28,7 +28,7 @@ export function ServicesGrid() {
             <Reveal key={service.slug} delay={i * 0.05} className="h-full">
               <Link
                 href={`/services/${service.slug}`}
-                className="group relative flex h-full flex-col bg-white p-8 transition-colors duration-300 hover:bg-ink-50"
+                className="group relative flex h-full flex-col bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-ink-50"
               >
                 <span
                   className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent-500 transition-transform duration-300 group-hover:scale-x-100"
@@ -36,7 +36,7 @@ export function ServicesGrid() {
                 />
                 <div className="flex items-start justify-between">
                   <span className="text-brand-700">
-                    <ServiceIcon icon={service.icon} className="h-9 w-9" />
+                    <ServiceIcon icon={service.icon} className="h-9 w-9" animate />
                   </span>
                   <ArrowUpRight
                     className="h-5 w-5 text-ink-300 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-500"

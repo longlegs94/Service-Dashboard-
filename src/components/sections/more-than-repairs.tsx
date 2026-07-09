@@ -20,8 +20,11 @@ export function MoreThanRepairs() {
             const Icon = icons[i % icons.length];
             return (
               <Reveal key={item.title} delay={i * 0.05}>
-                <div className="border-t-2 border-ink-900 pt-5">
-                  <Icon className="h-6 w-6 text-accent-600" aria-hidden="true" />
+                <div className="group border-t-2 border-ink-900 pt-5 transition-transform duration-300 hover:-translate-y-1">
+                  <Icon
+                    className="h-6 w-6 text-accent-600 transition-transform duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  />
                   <h3 className="font-display mt-4 text-lg font-bold text-ink-900">
                     {item.title}
                   </h3>

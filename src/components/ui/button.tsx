@@ -5,9 +5,16 @@ type Variant = "primary" | "secondary" | "outline" | "ghost" | "white";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 " +
+  "group relative inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 " +
   "active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
+
+/** Diagonal hover sheen — transform/opacity only, clipped to its own layer so it never crops the button's box-shadow. */
+const sheen = (
+  <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+    <span className="absolute inset-y-0 left-0 w-1/3 -translate-x-full skew-x-[-20deg] bg-white/25 opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[400%] group-hover:opacity-100" />
+  </span>
+);
 
 const variants: Record<Variant, string> = {
   primary:
@@ -45,6 +52,7 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
     const { href, ...linkProps } = rest as Omit<ButtonAsLink, keyof CommonProps> & { href: string };
     return (
       <Link href={href} className={classes} {...linkProps}>
+        {sheen}
         {children}
       </Link>
     );
@@ -52,6 +60,7 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
 
   return (
     <button className={classes} {...(rest as Omit<ButtonAsButton, keyof CommonProps>)}>
+      {sheen}
       {children}
     </button>
   );

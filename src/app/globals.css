@@ -91,6 +91,53 @@ body {
   background-size: 28px 28px;
 }
 
+/* Slow drift on the hero's dot grid — ambient, not distracting */
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 28px;
+  }
+}
+.dotgrid-drift {
+  animation: grid-drift 24s linear infinite;
+}
+
+/* Faint scanline sweep layered over the hero */
+@keyframes scanline-sweep {
+  from {
+    transform: translateY(-45%);
+  }
+  to {
+    transform: translateY(45%);
+  }
+}
+.scanline-layer {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(147 197 253 / 0.05) 45%,
+    rgb(147 197 253 / 0.12) 50%,
+    rgb(147 197 253 / 0.05) 55%,
+    transparent 100%
+  );
+  animation: scanline-sweep 7s ease-in-out infinite alternate;
+}
+
+/* Infinite marquee track — content is duplicated in markup so a 50% shift loops seamlessly */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-scroll 34s linear infinite;
+}
+
 ::selection {
   background: var(--color-accent-200);
 }

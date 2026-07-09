@@ -15,7 +15,7 @@ export function Testimonials() {
         <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
           {testimonials.map((t, i) => (
             <Reveal key={i} delay={i * 0.07}>
-              <figure className="flex h-full flex-col border-l-2 border-accent-500 pl-6">
+              <figure className="flex h-full flex-col border-l-2 border-accent-500 pl-6 transition-transform duration-300 hover:-translate-y-1">
                 <div className="flex gap-1" aria-label={`${t.rating} out of 5 stars`}>
                   {Array.from({ length: t.rating }).map((_, s) => (
                     <Star key={s} className="h-3.5 w-3.5 fill-accent-500 text-accent-500" aria-hidden="true" />
