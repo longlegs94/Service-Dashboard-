@@ -1,5 +1,7 @@
 # HomePro Appliances — Website Blueprint & Monetization Roadmap
 
+*Execution layer. The strategy above it lives in `ROADMAP.md` (positioning, horizons,
+financial model, discipline list) — read that first when prioritizing.*
 *Master plan of record. Written 2026-07-05. Update phase statuses as work lands.*
 *Execution model: Fable 5 orchestrates and reviews; implementation work is delegated to
 cheaper models (Haiku = mechanical edits, Sonnet = feature builds) — see §7.*
